@@ -1,0 +1,302 @@
+:root{
+  --bg:#05070d;
+  --bg2:#08101b;
+  --card:rgba(10,18,31,.72);
+  --card2:rgba(12,22,38,.9);
+  --text:#f6f8fb;
+  --muted:#9eabbc;
+  --line:rgba(255,255,255,.09);
+  --blue:#5ab0ff;
+  --blue2:#247bff;
+  --violet:#8e63ff;
+  --shadow:0 30px 80px rgba(0,0,0,.45);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 14% 8%,rgba(37,119,255,.13),transparent 26%),
+    radial-gradient(circle at 84% 15%,rgba(123,73,255,.12),transparent 22%),
+    linear-gradient(180deg,#03060b 0%,#07101a 47%,#030609 100%);
+  font-family:"DM Sans",system-ui,sans-serif;
+  overflow-x:hidden;
+}
+body.menu-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-3;opacity:.45}
+.noise{
+  position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+.cursor-glow{
+  position:fixed;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(62,145,255,.09),transparent 64%);
+  transform:translate(-50%,-50%);pointer-events:none;z-index:-2;
+}
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:15;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px;
+  padding:16px clamp(20px,5vw,72px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+  background:linear-gradient(180deg,rgba(3,6,11,.9),rgba(3,6,11,.42));
+  backdrop-filter:blur(16px);
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+.brand-mark{
+  width:44px;height:44px;border-radius:14px;
+  display:grid;place-items:center;font:800 16px "Manrope";
+  border:1px solid rgba(90,176,255,.42);
+  color:#9bd0ff;box-shadow:inset 0 0 22px rgba(64,144,255,.08),0 0 30px rgba(64,144,255,.07);
+}
+.brand strong{display:block;font:700 14px "Manrope"}
+.brand small{display:block;margin-top:3px;color:#75859a;font-size:9px;text-transform:uppercase;letter-spacing:.18em}
+nav{display:flex;justify-content:center;gap:28px}
+.nav-link{position:relative;color:#aab6c6;font-size:13px;transition:.25s}
+.nav-link:hover,.nav-link.active{color:#fff}
+.nav-link:after{
+  content:"";position:absolute;left:50%;right:50%;bottom:-10px;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--violet));transition:.25s;
+}
+.nav-link.active:after{left:0;right:0}
+.header-cta{
+  padding:11px 17px;border:1px solid rgba(90,176,255,.35);border-radius:999px;
+  font-size:12px;background:rgba(33,92,176,.1);box-shadow:0 0 32px rgba(42,101,255,.08)
+}
+.header-cta span{margin-left:8px;color:#8fc7ff}
+.menu-btn{display:none;background:none;border:0;width:42px;height:42px;position:relative}
+.menu-btn span{position:absolute;width:20px;height:1px;background:#fff;left:11px;transition:.25s}
+.menu-btn span:first-child{top:17px}.menu-btn span:last-child{top:24px}
+
+.section{padding:120px clamp(22px,6vw,90px)}
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1.06fr .94fr;gap:5vw;align-items:center;
+  padding-top:135px;position:relative;
+}
+.eyebrow,.section-kicker{
+  text-transform:uppercase;letter-spacing:.2em;color:#8fb6df;font-size:11px;font-weight:700
+}
+.eyebrow span{color:#6d7e94;margin:0 8px}
+.hero h1{
+  font:800 clamp(3.5rem,7vw,7.4rem)/.92 "Manrope";letter-spacing:-.06em;margin:18px 0 14px;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,#62b4ff,#8f66ff 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero h2{font:700 clamp(1.05rem,1.8vw,1.55rem) "Manrope";margin:0 0 18px;color:#e4ebf5}
+.hero-lead{font-size:clamp(1rem,1.35vw,1.2rem);line-height:1.6;color:#c3cfdd;max-width:690px;margin:0 0 7px}
+.hero-sub{color:var(--muted);line-height:1.7;max-width:690px;margin:0 0 28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  min-height:48px;padding:0 18px;border-radius:13px;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.035);
+  font-size:13px;font-weight:700;transition:.3s;
+}
+.btn:hover{transform:translateY(-2px);border-color:rgba(100,180,255,.45);box-shadow:0 16px 35px rgba(0,0,0,.26)}
+.btn-primary{
+  background:linear-gradient(135deg,#ecf7ff,#9dceff);color:#06101c;border-color:transparent;
+  box-shadow:0 0 38px rgba(72,153,255,.15)
+}
+.icon{font-size:17px}
+.hero-metrics{display:flex;gap:28px;margin-top:34px}
+.hero-metrics div{display:flex;flex-direction:column}
+.hero-metrics strong{font:800 22px "Manrope"}
+.hero-metrics span{font-size:11px;color:#78879a;margin-top:4px}
+
+.hero-visual{min-height:650px;position:relative;display:flex;align-items:end;justify-content:center}
+.orb{
+  position:absolute;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(77,151,255,.24) 0%,rgba(53,98,183,.1) 42%,transparent 68%);
+  filter:blur(5px);top:5%;right:-4%;animation:pulse 5s ease-in-out infinite;
+}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.78}}
+.portrait-frame{
+  width:min(94%,560px);height:670px;position:relative;border-radius:38px 38px 0 0;overflow:hidden;
+  filter:drop-shadow(0 35px 65px rgba(0,0,0,.52));
+}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.portrait-shade{
+  position:absolute;inset:0;background:
+    linear-gradient(180deg,transparent 58%,rgba(4,8,14,.68) 100%),
+    linear-gradient(90deg,rgba(22,105,255,.08),transparent 38%);
+}
+.micro-card{
+  position:absolute;z-index:2;border:1px solid rgba(109,161,255,.22);
+  background:rgba(5,11,21,.68);backdrop-filter:blur(13px);box-shadow:var(--shadow)
+}
+.card-top{
+  right:-15px;top:110px;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;
+  gap:3px;color:#7d8da4;letter-spacing:.15em;font-size:12px
+}
+.profile-card{
+  right:-18px;bottom:88px;border-radius:18px;padding:10px;display:flex;align-items:center;gap:11px
+}
+.profile-card img{width:62px;height:62px;object-fit:cover;object-position:center 24%;border-radius:12px}
+.profile-card small{display:block;color:#7890a8;font-size:9px}
+.profile-card strong{display:block;margin-top:3px;font-size:11px}
+.signature{
+  position:absolute;z-index:2;left:-10px;top:170px;
+  font-size:22px;line-height:1.24;font-style:italic;color:#94b9ff;transform:rotate(-7deg);
+  text-shadow:0 0 20px rgba(86,127,255,.24)
+}
+
+.signal-row{
+  margin:-35px clamp(22px,6vw,90px) 0;padding:20px 26px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border:1px solid var(--line);
+  background:rgba(5,11,20,.68);backdrop-filter:blur(14px);border-radius:22px;position:relative;z-index:2
+}
+.signal-row>div{display:flex;align-items:center;gap:12px}
+.signal-icon{font-size:23px;color:#6bb7ff}
+.signal-row p{margin:0;display:flex;flex-direction:column}
+.signal-row strong{font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.signal-row small{color:#7f8ea1;font-size:10px;margin-top:4px}
+
+.section-heading{display:grid;grid-template-columns:.4fr 1.6fr;gap:3vw;margin-bottom:52px}
+.section-heading h2{font:700 clamp(2.35rem,5vw,5.5rem)/1 "Manrope";letter-spacing:-.05em;margin:0}
+.section-note{grid-column:2;color:var(--muted);max-width:720px;line-height:1.7;margin:12px 0 0}
+
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.glass-card,.skill-card,.project-card,.cert-card{
+  border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+  box-shadow:inset 0 1px rgba(255,255,255,.02);border-radius:var(--radius)
+}
+.glass-card{padding:30px;min-height:310px}
+.card-icon{font-size:29px;color:#6db7ff}
+.glass-card h3{font:700 28px "Manrope";margin:18px 0 13px}
+.glass-card p{color:var(--muted);line-height:1.8;margin:0}
+.about-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.about-points span,.chips b{
+  font-weight:600;font-size:10px;padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);color:#c6d1dd
+}
+.philosophy-card{
+  background:
+   radial-gradient(circle at 90% 10%,rgba(71,140,255,.14),transparent 32%),
+   linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015))
+}
+.quote-mark{font:700 70px/1 Georgia;color:#5baaff!important}
+
+.timeline{position:relative;max-width:1080px;margin-left:auto}
+.timeline:before{
+  content:"";position:absolute;left:20px;top:10px;bottom:20px;width:1px;
+  background:linear-gradient(var(--blue),rgba(115,87,255,.65),rgba(255,255,255,.05))
+}
+.timeline-item{
+  position:relative;display:grid;grid-template-columns:75px 1fr;gap:22px;margin-bottom:18px;
+  padding:24px 26px 24px 70px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.02)
+}
+.timeline-dot{
+  position:absolute;left:15px;top:37px;width:11px;height:11px;border-radius:50%;background:#58adff;
+  box-shadow:0 0 20px rgba(63,158,255,.65)
+}
+.company-badge{
+  width:62px;height:62px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:#0e1724;
+  border:1px solid rgba(255,255,255,.07)
+}
+.company-badge.td{background:#129b3a;color:#fff;font-size:22px}
+.company-badge.intact{background:#f7f7f7;color:#d51532;font-size:13px}
+.company-badge.deloitte{background:#090909;color:#fff}
+.role-meta{float:right;color:#708298;font-size:11px;margin:0 0 5px 15px!important}
+.role h3{font:700 22px "Manrope";margin:0}
+.role h4{font:600 13px "Manrope";color:#64b2ff;margin:4px 0 10px}
+.role p{color:var(--muted);line-height:1.65;margin:0}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-card{padding:24px;min-height:250px;transition:.3s}
+.skill-card:hover{transform:translateY(-4px);border-color:rgba(83,166,255,.24)}
+.skill-card>span{color:#617996;font-size:10px;letter-spacing:.17em}
+.skill-card h3{font:700 22px "Manrope";margin:35px 0 11px}
+.skill-card p{color:var(--muted);line-height:1.68;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.chips b{padding:6px 9px}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project-card{padding:24px;min-height:320px;display:flex;flex-direction:column;transform-style:preserve-3d;transition:.2s}
+.project-top{display:flex;justify-content:space-between;color:#60758d;font-size:11px}
+.project-icon{font-size:34px;color:#65b7ff}
+.project-card h3{font:700 22px "Manrope";margin:30px 0 10px}
+.project-card p{color:var(--muted);line-height:1.68;margin:0}
+.project-link{margin-top:auto;padding-top:25px;color:#86c4ff;font-size:12px;font-weight:700}
+
+.cert-card{
+  padding:42px;display:flex;align-items:center;justify-content:space-between;min-height:300px;overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 30%,rgba(80,160,255,.2),transparent 25%),
+    radial-gradient(circle at 90% 70%,rgba(139,86,255,.14),transparent 28%),
+    rgba(255,255,255,.02)
+}
+.cert-card h2{font:700 clamp(2rem,4.5vw,4.8rem)/1.03 "Manrope";letter-spacing:-.045em;margin:14px 0}
+.cert-card>div>p:last-child{color:#72b9ff;font-weight:700}
+.cert-orbit{width:220px;height:220px;border-radius:50%;display:grid;place-items:center;position:relative}
+.cert-orbit span{
+  width:90px;height:90px;border-radius:28px;display:grid;place-items:center;font:800 28px "Manrope";
+  background:linear-gradient(135deg,#54b5ff,#6757ff);box-shadow:0 0 55px rgba(72,135,255,.35)
+}
+.cert-orbit:before,.cert-orbit:after,.cert-orbit i{
+  content:"";position:absolute;inset:15px;border:1px solid rgba(112,177,255,.18);border-radius:50%
+}
+.cert-orbit:after{inset:-10px;border-style:dashed;animation:spin 18s linear infinite}
+.cert-orbit i:first-of-type{inset:46px;border-color:rgba(151,106,255,.23)}
+.cert-orbit i:last-of-type{inset:0;transform:rotate(35deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.contact-section{text-align:center;padding-bottom:125px}
+.contact-title{font:700 clamp(3rem,8vw,8rem)/.94 "Manrope";letter-spacing:-.06em;margin:18px auto 22px}
+.contact-copy{color:var(--muted);max-width:720px;margin:0 auto 28px;line-height:1.7}
+.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+footer{
+  padding:25px clamp(22px,6vw,90px) 38px;border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;gap:20px;color:#647386;font-size:10px
+}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media (max-width:1020px){
+  .site-header{grid-template-columns:auto auto}.header-cta{display:none}
+  nav{
+    position:fixed;inset:77px 16px auto 16px;display:flex;flex-direction:column;align-items:center;
+    padding:26px;background:rgba(5,10,18,.96);border:1px solid var(--line);border-radius:22px;
+    opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s
+  }
+  nav.open{opacity:1;transform:none;pointer-events:auto}
+  .menu-btn{display:block;justify-self:end}
+  .menu-btn.open span:first-child{transform:translateY(3.5px) rotate(45deg)}
+  .menu-btn.open span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+  .hero{grid-template-columns:1fr;padding-top:135px}
+  .hero-visual{min-height:600px}
+  .portrait-frame{height:620px}
+  .signal-row{grid-template-columns:1fr 1fr;margin-top:20px}
+  .section-heading{grid-template-columns:1fr}
+  .section-note{grid-column:auto}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .projects-grid{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .section{padding:88px 20px}
+  .site-header{padding:13px 18px}
+  .brand strong{font-size:12px}.brand-mark{width:40px;height:40px}
+  .hero{padding-top:110px;min-height:auto}
+  .hero h1{font-size:clamp(3.1rem,16vw,5rem)}
+  .hero-actions{flex-direction:column}.btn{justify-content:center;width:100%}
+  .hero-metrics{justify-content:space-between;gap:12px}
+  .hero-visual{min-height:520px}
+  .portrait-frame{height:520px;width:100%}
+  .micro-card.card-top{right:4px;top:90px}
+  .profile-card{right:3px;bottom:25px}
+  .signature{display:none}
+  .signal-row{grid-template-columns:1fr;margin:8px 20px 0}
+  .skills-grid{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr;padding:68px 20px 22px 48px}
+  .company-badge{position:absolute;left:48px;top:16px;width:44px;height:44px;border-radius:10px}
+  .role-meta{float:none;margin:0 0 5px!important}
+  .timeline:before{left:20px}.timeline-dot{left:15px}
+  .cert-card{padding:28px;min-height:auto}.cert-orbit{display:none}
+  footer{flex-direction:column}
+}
